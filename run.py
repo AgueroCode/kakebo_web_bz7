@@ -1,0 +1,1 @@
+from kakebo import app #no desde __init__.py porque vamos a la carpeta
