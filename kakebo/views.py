@@ -31,6 +31,14 @@ def index():
 
 @app.route('/nuevo', methods=['GET', 'POST'])
 def nuevo():
-    form = MovimientosForm()
+    formulario = MovimientosForm()
 
-    return render_template('alta.html', form = form)
+    if request.method == 'GET':
+        return render_template('alta.html', form = formulario)
+    else:
+        if formulario.validate(): #comprueba si se cumplen los validadores que pusimos en los metodos metidos en forms.py Si hay errores nos los informa.
+            pass
+            #Insertar movimiento en la base de datos
+            #Redirect a la ruta /
+        else:
+            return render_template('alta.html', form = formulario) #esto tiene sentido porque el validate nos va a informar tambien los errores
