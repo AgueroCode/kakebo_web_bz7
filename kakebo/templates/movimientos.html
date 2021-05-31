@@ -12,6 +12,7 @@
                 <th>Tipo</th>
                 <th>Cantidad</th>
                 <th>Saldo</th>
+                <th></th>
             </tr>
             {% for movimiento in datos %}
             <tr>
@@ -26,6 +27,10 @@
                 </td>
                 <td>{{ movimiento.cantidad }}</td>   
                 <td>{{ movimiento.saldo }}</td>
+                <td class="btn">
+                    <a href="/borrar/{{ movimiento.id }}">Borrar</a> |
+                    <a href="/modificar/{{ movimiento.id }}">Modificar</a>
+                </td>
             </tr>
             {% endfor %}
         </table>
