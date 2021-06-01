@@ -21,11 +21,11 @@
                 <td>{{ movimiento.categoria }}</td>
                 <td>{% if movimiento.esGasto == 0 %}
                         Ingreso
-                    {% else %}
+                        {% else %}
                         Gasto  
                     {% endif %}    
                 </td>
-                <td>{{ movimiento.cantidad }}</td>   
+                <td>{{ movimiento.cantidad }} €</td>   
                 <td>{{ movimiento.saldo }}</td>
                 <td class="btn">
                     <a href="/borrar/{{ movimiento.id }}">Borrar</a> |
@@ -34,4 +34,33 @@
             </tr>
             {% endfor %}
         </table>
+        <form action="/" method="POST">
+            <fieldset class="container">
+                {{ formulario.hidden_tag() }}
+                <div>
+                    {{ formulario.fechaDesde.label(class="mylabel")}}
+                    {{ formulario.fechaDesde( type="date") }}
+                    {% for error in formulario.fechaDesde.errors %}
+                    <p class="msg-err">
+                        {{ error }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ formulario.fechaHasta.label(class="mylabel")}}
+                    {{ formulario.fechaHasta( type="date") }}
+                    {% for error in formulario.fechaHasta.errors %}
+                    <p class="msg-err">
+                        {{ error }}
+                    </p>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ formulario.texto.label(class="mylabel")}}
+                    {{ formulario.texto() }}
+                </div>
+            </fieldset>
+            {{ formulario.submit }}
+            <a href="/">Reset</a>
+        </form>
 {% endblock %}

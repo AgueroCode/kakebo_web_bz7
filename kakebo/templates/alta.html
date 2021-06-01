@@ -4,9 +4,10 @@
 
 {% block contenido %}
 <h1>Nuevo movimiento</h1>
-<form action="/nuevo" method="post">
-    {{ form.hidden_tag() }}
+<form action="/nuevo" method="POST">
     <fieldset class="container">
+        {{ form.hidden_tag() }}
+
         <div>
             {{ form.fecha.label(class="mylabel") }}
             {{ form.fecha(type="date") }}
@@ -18,29 +19,29 @@
         </div>    
         <div>
             {{ form.concepto.label(class="mylabel") }}  
-            {{ form.concepto() }}
+            {{ form.concepto(placeholder="Razón del gasto") }}
             {% for error in form.concepto.errors %}
-            <p class="msg-err">
-                {{ error }}
-            </p>
+                <p class="msg-err">
+                    {{ error }}
+                </p>
             {% endfor %}
         </div>
         <div>
             {{ form.categoria.label(class="mylabel") }}
             {{ form.categoria() }}   
             {% for error in form.categoria.errors %}
-            <p class="msg-err">
-                {{ error }}
-            </p>
+                <p class="msg-err">
+                    {{ error }}
+                </p>
             {% endfor %}
         </div>   
         <div>
             {{ form.cantidad.label(class="mylabel") }}
             {{ form.cantidad() }}   
             {% for error in form.cantidad.errors %}
-            <p class="msg-err">
-                {{ error }}
-            </p>
+                <p class="msg-err">
+                    {{ error }}
+                </p>
             {% endfor %}
         </div> 
         <div>
