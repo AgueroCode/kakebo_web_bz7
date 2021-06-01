@@ -21,7 +21,7 @@ class MovimientosForm(FlaskForm):
     submit = SubmitField("Aceptar")
 
 class FiltraMovimientosForm(FlaskForm):
-    fechaDesde = DateField("Desde", validators=[fecha_por_debajo_de_hoy], default=date(1, 1, 1))
+    fechaDesde = DateField("Desde", validators=[fecha_por_debajo_de_hoy], default=date.today())
     fechaHasta = DateField("Hasta", validators=[fecha_por_debajo_de_hoy], default=date.today())
     texto = StringField("Concepto")
     submit = SubmitField("Filtrar")
